@@ -7,7 +7,8 @@ exports.createCourse = (req, res, next) => {
         name: req.body.name,
         startDate: req.body.startDate,
         finalDate: req.body.finalDate,
-        studentsAmountLimit: req.body.studentsAmountLimit
+        studentsAmountLimit: req.body.studentsAmountLimit,
+        teacherId: req.body.teacherId
     };
     courseDTO.create(course, (err, data) => {
         if (err) {
@@ -63,7 +64,8 @@ exports.updateCourse = (req, res, next) => {
         name: req.body.name,
         startDate: req.body.startDate,
         finalDate: req.body.finalDate,
-        studentsAmountLimit: req.body.studentsAmountLimit
+        studentsAmountLimit: req.body.studentsAmountLimit,
+        teacherId: red.body.teacherId
     };
     courseDTO.update({_id: req.body.id}, course, (err, data) => {
         if (err) {
