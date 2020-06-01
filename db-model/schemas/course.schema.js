@@ -6,27 +6,33 @@ const mongooseUniqueValidator = require("mongoose-unique-validator");
 let Schema = mongoose.Schema;
 
 /** Teacher Schema */
-let teacherSchema = new Schema({
-    document: {
+let courseSchema = new Schema({
+    code: {
         type: "String",
         unique: true,
         required: true
     },
     name: {
         type: "String",
-        unique: false,
         required: true
     },
-    lastname: {
-        type: "String",
-        unique: false,
+    startDate: {
+        type: "Date",
         required: true
     },
-    courses: ["String"]
+    finalDate: {
+        type: "Date",
+        required: true
+    },
+    studentsAmountLimit:{
+        type:"Number",
+        min: 1,
+        max: 50
+    }
 },
 {
     timestamps: true
 });
 
-teacherSchema.plugin(mongooseUniqueValidator);
-module.exports = teacherSchema;
+courseSchema.plugin(mongooseUniqueValidator);
+module.exports = courseSchema;

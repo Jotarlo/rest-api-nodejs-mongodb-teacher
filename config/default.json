@@ -3,6 +3,8 @@
     "db-connection":{
         "host":"localhost",
         "port": 27017,
-        "database": "TeachersDB"
+        "database": "TeachersDB",
+        "user": "xyz",
+        "password":"mYd!.W&,m4uWJ-&x"
     }
 }

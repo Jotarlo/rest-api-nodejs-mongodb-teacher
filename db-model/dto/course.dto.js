@@ -3,12 +3,12 @@ const mongoose = require("mongoose");
 const db = require("../database");
 
 /** Schema file */
-const teacherSchema = require("../schemas/teacher.schema");
+const courseSchema = require("../schemas/course.schema");
 
 /** start db connection */
 db();
 
-teacherSchema.statics = {
+courseSchema.statics = {
     create: function(data, cb){
         let t = new this(data);
         t.save(cb);
@@ -16,7 +16,7 @@ teacherSchema.statics = {
     getAll: function (query, cb){
         this.find(query, cb);
     },
-    getByDocument: function (query, cb){
+    getByCode: function (query, cb){
         this.find(query, cb);
     },
     update: function(query, newdata, cb){
@@ -27,5 +27,5 @@ teacherSchema.statics = {
     }
 };
 
-let teacherColl = mongoose.model("coll_teacher", teacherSchema);
-module.exports = teacherColl;
+let courseColl = mongoose.model("coll_course", courseSchema);
+module.exports = courseColl;

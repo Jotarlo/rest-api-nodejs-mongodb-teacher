@@ -1,14 +1,15 @@
 /** DTO file */
-const teacherDTO = require("../db-model/dto/teacher.dto");
+const courseDTO = require("../db-model/dto/course.dto");
 
-exports.createTeacher = (req, res, next) => {
-    let teacher = {
-        document: req.body.document,
+exports.createCourse = (req, res, next) => {
+    let course = {
+        code: req.body.code,
         name: req.body.name,
-        lastname: req.body.lastname,
-        courses: req.body.courses
+        startDate: req.body.startDate,
+        finalDate: req.body.finalDate,
+        studentsAmountLimit: req.body.studentsAmountLimit
     };
-    teacherDTO.create(teacher, (err, data) => {
+    courseDTO.create(course, (err, data) => {
         if (err) {
             return res.json({
                 response: "KO",
@@ -23,8 +24,8 @@ exports.createTeacher = (req, res, next) => {
     });
 }
 
-exports.getAllTeachers = (req, res, next) => {
-    teacherDTO.getAll({}, (err, data) => {
+exports.getAllCourses = (req, res, next) => {
+    courseDTO.getAll({}, (err, data) => {
         if (err) {
             return res.json({
                 response: "KO",
@@ -39,8 +40,8 @@ exports.getAllTeachers = (req, res, next) => {
     });
 }
 
-exports.getByDocument = (req, res, next) => {
-    teacherDTO.getByDocument({ document: req.params.document }, (err, data) => {
+exports.getByCode = (req, res, next) => {
+    courseDTO.getByCode({ document: req.params.document }, (err, data) => {
         if (err) {
             return res.json({
                 response: "KO",
@@ -56,14 +57,15 @@ exports.getByDocument = (req, res, next) => {
 }
 
 
-exports.updateTeacher = (req, res, next) => {
-    let teacher = {
-        document: req.body.document,
+exports.updateCourse = (req, res, next) => {
+    let course = {
+        code: req.body.code,
         name: req.body.name,
-        lastname: req.body.lastname,
-        courses: req.body.courses
+        startDate: req.body.startDate,
+        finalDate: req.body.finalDate,
+        studentsAmountLimit: req.body.studentsAmountLimit
     };
-    teacherDTO.update({_id: req.body.id}, teacher, (err, data) => {
+    courseDTO.update({_id: req.body.id}, course, (err, data) => {
         if (err) {
             return res.json({
                 response: "KO",
@@ -77,8 +79,8 @@ exports.updateTeacher = (req, res, next) => {
     });
 }
 
-exports.removeTeacher = (req, res, next) => {
-    teacherDTO.delete({ _id: req.params.id }, (err, data) => {
+exports.removeCourse = (req, res, next) => {
+    courseDTO.delete({ _id: req.params.id }, (err, data) => {
         if (err) {
             return res.json({
                 response: "KO",
